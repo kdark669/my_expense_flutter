@@ -4,15 +4,22 @@ import 'package:flutter/material.dart';
 
 class TransactionForm extends StatelessWidget {
 
+  final Function addTransaction;
   final titleController = TextEditingController();
-//  final amountController = TextEditingController();
-  String amountInput;
+  final amountController = TextEditingController();
+
+  //  constructor
+
+  TransactionForm(
+      this.addTransaction,
+      );
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        padding: EdgeInsets.all(100),
+        padding: EdgeInsets.all(10),
+//        margin: EdgeInsets.all(10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
@@ -27,16 +34,16 @@ class TransactionForm extends StatelessWidget {
             TextField(
               autocorrect: false,
               decoration: InputDecoration(labelText: 'Amount'),
-              onChanged: (val){
-                amountInput = val;
-              },
+              controller: amountController,
+//              onChanged: (val){
+//                amountInput = val;
+//              },
             ),
             FlatButton(
               child: Text('Add Transaction'),
               textColor: Colors.blue,
               onPressed: (){
-                print(titleController.text );
-                print(amountInput);
+                addTransaction(titleController.text, double.parse(amountController.text ));
               } ,
             )
           ],

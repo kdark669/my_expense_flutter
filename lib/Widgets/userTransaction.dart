@@ -43,7 +43,8 @@ class _UserTransactionState extends State<UserTransaction> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        TransactionForm(),
+//        _addNewTransaction pass the pointer
+        TransactionForm(_addNewTransaction),
         TransactionList(_userTransaction),
       ],
     );

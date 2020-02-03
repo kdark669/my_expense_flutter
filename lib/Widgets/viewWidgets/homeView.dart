@@ -10,17 +10,21 @@ class HomeView extends StatelessWidget {
       ),
       body: Column(
 //        mainAxisAlignment: MainAxisAlignment.start ,
+
         children: <Widget>[
+
+//          chart
           Card(
             child: Container(
-              width: double.infinity,
               child: Center(
                 child: Text('Chart'),
               ),
             ),
             color: Colors.amber,
-            elevation: 15.0,
+            elevation: 1.0,
           ),
+
+//          userTransaction
           UserTransaction()
         ],
       ),
