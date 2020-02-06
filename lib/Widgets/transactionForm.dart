@@ -7,12 +7,21 @@ class TransactionForm extends StatelessWidget {
   final Function addTransaction;
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+  void submitData(){
+    final enterTitle = titleController.text;
+    final enterAmount = double.parse(amountController.text );
+    if(enterTitle.isEmpty || enterAmount <= 0){
+      return;
+    }
+    addTransaction(enterTitle, enterAmount );
+  }
 
   //  constructor
 
   TransactionForm(
       this.addTransaction,
       );
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +36,7 @@ class TransactionForm extends StatelessWidget {
               autocorrect: false,
               decoration: InputDecoration(labelText: "Title Of Expenses"),
               controller: titleController,
+              onSubmitted: (_) => submitData(),
 //                    onChanged: (val){
 //                      titleInput = val
 //                    },
@@ -35,6 +45,8 @@ class TransactionForm extends StatelessWidget {
               autocorrect: false,
               decoration: InputDecoration(labelText: 'Amount'),
               controller: amountController,
+              keyboardType: TextInputType.numberWithOptions(decimal: true ),
+              onSubmitted: (_) => submitData(),
 //              onChanged: (val){
 //                amountInput = val;
 //              },
@@ -42,9 +54,7 @@ class TransactionForm extends StatelessWidget {
             FlatButton(
               child: Text('Add Transaction'),
               textColor: Colors.blue,
-              onPressed: (){
-                addTransaction(titleController.text, double.parse(amountController.text ));
-              } ,
+              onPressed: submitData,
             )
           ],
         ),
