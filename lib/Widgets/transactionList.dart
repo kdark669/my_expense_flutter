@@ -25,7 +25,7 @@ class TransactionList extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                           border: Border.all(
-                            color: Colors.black,
+                            color: Theme.of(context).primaryColorDark,
                             width: 2,
                           )),
                       padding: EdgeInsets.all(10.0),

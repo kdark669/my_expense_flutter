@@ -9,6 +9,10 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       title: 'Expense Tracker',
       home: HomeView(),
+      theme:ThemeData(
+        primarySwatch: Colors.purple,
+        accentColor: Colors.amber
+      ),
     );
   }
 }
